@@ -75,3 +75,9 @@ app.post('/tweets', (req, res) => {
 app.get('/tweets', ({}, res) => {
     res.send(tweets.slice(-10));
 });
+
+app.get('/tweets/:USERNAME', (req, res) => {
+    const {USERNAME} = req.params;
+    const individualTweets = tweets.filter(({username}) => username === USERNAME);
+    res.send(individualTweets);
+});
